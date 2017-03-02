@@ -87,3 +87,10 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# PyCharm files
+.idea/
+
+# Google App Engine SDK
+google_appengine/
+

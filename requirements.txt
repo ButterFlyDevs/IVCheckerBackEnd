@@ -1,0 +1,4 @@
+# This requirements file lists all third-party dependencies for this project.
+# Use: pip install -r requirements.txt -t lib/
+
+google-endpoints
