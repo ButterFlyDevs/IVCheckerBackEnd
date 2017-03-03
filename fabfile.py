@@ -1,6 +1,6 @@
 from fabric.api import local
 from fabric.colors import blue, red
-
+import time
 ######################################################################
 #  FABRIC Fabfile.  <http://www.fabfile.org/>
 # This is the file to configure Fabric Python Library to admin tasks
@@ -38,15 +38,6 @@ def run():
     local('google_appengine/dev_appserver.py app.yaml &')
 
 
-def test():
-    """
-    Testing all app.
-    :return:
-    """
-    print (blue('Runing IVCheckerBackEnd Test Suite ##'))
-    local('pytest test/ -vv -s')
-
-
 def kill():
     """
     Kill all processes that is related with google dev server.
@@ -54,3 +45,22 @@ def kill():
     """
     print (red("Killing all processes taht are related with google dev server."))
     local("kill -9 $(ps -aux | grep google | awk '{ print $2}' | head -n -1)")
+
+
+def restart():
+    #TODO review, don't work!
+
+    print (red("Restarting dev server processes."))
+
+    kill()
+    time.sleep(5)
+    run()
+
+
+def test():
+    """
+    Testing all app.
+    :return:
+    """
+    print (blue('Runing IVCheckerBackEnd Test Suite ##'))
+    local('pytest test/ -vv -s')
