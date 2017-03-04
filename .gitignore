@@ -94,3 +94,4 @@ ENV/
 # Google App Engine SDK
 google_appengine/
 
+/google-cloud-sdk/

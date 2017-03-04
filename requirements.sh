@@ -61,7 +61,24 @@ then
     echo -e "\n\033[34m 8. Installing GAE python dependencies from requirements.txt \033[0m\n"
     sudo pip install -r requirements.txt -t lib/
 
+    echo -e "\n\033[34m 9. Dowloading Google Cloud SDK v.146.0.0 \033[0m\n"
+    curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-146.0.0-linux-x86_64.tar.gz
+
+    echo -e "\n\033[34m Extract files from Google Cloud SDK \033[0m\n"
+    unzip google-cloud-sdk-146.0.0-linux-x86_64.tar.gz
+
+    echo -e "\n\033[34m Installing Google Cloud SDK \033[0m\n"
+    ./google-cloud-sdk/install.sh
+
+    echo -e "\n\033[34m Deleting .tar.gz file \033[0m\n"
+    rm google-cloud-sdk-146.0.0-linux-x86_64.tar.gz
+
+
+
     echo -e "\n\033[34m Done! \033[0m\n"
+
+
+
 
 else
 

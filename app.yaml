@@ -5,6 +5,7 @@ basic_scaling:
   max_instances: 2
 
 #[START_EXCLUDE]
+# https://cloud.google.com/appengine/docs/standard/python/config/appref#skip_files
 skip_files:
 - ^(.*/)?#.*#$
 - ^(.*/)?.*~$
@@ -12,6 +13,12 @@ skip_files:
 - ^(.*/)?.*/RCS/.*$
 - ^(.*/)?\..*$
 - ^(.*/)?setuptools/script \(dev\).tmpl$
+- ^docs/.*$
+- ^google-cloud-sdk/.*$
+
+- ^(.*/)?README\.md$
+- ^LICENSE$
+
 #[END_EXCLUDE]
 
 handlers:
@@ -30,3 +37,4 @@ env_variables:
   # 'gcloud service-management deploy swagger.json' command.
   ENDPOINTS_SERVICE_NAME: echo-api.endpoints.[YOUR-PROJECT-ID].cloud.goog
   ENDPOINTS_SERVICE_VERSION: 2016-08-01r0
+
