@@ -59,7 +59,7 @@ then
     pytest --version
 
     echo -e "\n\033[34m 8. Installing GAE python dependencies from requirements.txt \033[0m\n"
-    sudo pip install -r requirements.txt -t lib/
+    sudo pip install -r app/requirements.txt -t app/lib/
 
     echo -e "\n\033[34m 9. Dowloading Google Cloud SDK v.146.0.0 \033[0m\n"
     curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-146.0.0-linux-x86_64.tar.gz

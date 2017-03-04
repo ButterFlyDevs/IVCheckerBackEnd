@@ -35,6 +35,6 @@ libraries:
 env_variables:
   # The following values are to be replaced by information from the output of
   # 'gcloud service-management deploy swagger.json' command.
-  ENDPOINTS_SERVICE_NAME: echo-api.endpoints.[YOUR-PROJECT-ID].cloud.goog
-  ENDPOINTS_SERVICE_VERSION: 2016-08-01r0
+  ENDPOINTS_SERVICE_NAME: main-api.endpoints.ivcheckerbackend.appspot.com
+  ENDPOINTS_SERVICE_VERSION: 2017-03-04r0
 

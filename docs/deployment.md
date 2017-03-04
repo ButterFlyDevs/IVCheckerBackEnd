@@ -1,4 +1,4 @@
-## Google App Engine App Deployment
+###  Cloud Endpoint Deployment in Google App Engine App
 
 To deploy out Back End we need use **gcloud** tool. This tool are available
 if we have executed requirements.sh manually or using fabric: 
@@ -27,14 +27,30 @@ IVCheckerBackEnd, so the id of the project will be ivcheckerbackend.
     Please enter numeric choice or text value (must exactly match list 
     item):  3
 
-After, we only need execute `gcloud app deploy`.
 
-    When we execute this the app will be deployed, and we will need
-    choose where we want deploy (we are going to select europe)
-    and after a while we can see the url to our project developed in
-    Google App Engine. See this example:
+After we need generate the OpenAPI configuration file. First we generate the specifications of our api in swageer format:
+   
+    > python lib/endpoints/endpointscfg.py get_openapi_spec main.IVCheckerApi --hostname main-api.endpoints.ivcheckerbackend.appspot.com
+
+And after we upload this file to our linked project with the same gcloud tool:
+ 
+    > gcloud service-management deploy ./ivcheckerv1openapi.json 
+
+    ...
     
-    $ gcloud app deploy
+    Service Configuration [2017-03-04r0] uploaded for service [main-api.endpoints.ivcheckerbackend.appspot.com]
+    
+To end we need copy this info in app.yaml in `env_variables`.
+
+
+After, we only need execute `gcloud app deploy`.
+    
+When we execute this the app will be deployed, and we will need
+choose where we want deploy (we are going to select europe)
+and after a while we can see the url to our project developed in
+Google App Engine. See this example:
+    
+    > gcloud app deploy
     You are creating an app for project [ivcheckerbackend].
     WARNING: Creating an App Engine application for a project is irreversible and the region
     cannot be changed. More information about regions is at
@@ -76,3 +92,24 @@ After, we only need execute `gcloud app deploy`.
 
 
 *Easy, right?*
+
+
+    
+After in a while we will have **our app working !** 
+
+We can try this in  any browser:
+
+
+    https://ivcheckerbackend.appspot.com/_ah/api/ivchecker/v1/helloWorld
+    
+    {
+     "content": "Hello World!"
+    }
+    
+    
+##### References:
+
+To know more about it:
+
+- [Gcloud command-line tool docs](https://cloud.google.com/sdk/gcloud/)
+- [Endpoints frameworks docs](https://cloud.google.com/endpoints/docs/frameworks/python/quickstart-frameworks-python)

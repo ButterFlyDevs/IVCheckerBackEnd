@@ -1,0 +1,199 @@
+{
+  "basePath": "/_ah/api",
+  "consumes": [
+    "application/json"
+  ],
+  "definitions": {
+    "MessagesMessagesEchoResponse": {
+      "properties": {
+        "content": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "MessagesMessagesExample": {
+      "properties": {
+        "example": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "MessagesMessagesVerb": {
+      "properties": {
+        "difficultyLevel": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "examples": {
+          "items": {
+            "$ref": "#/definitions/MessagesMessagesExample"
+          },
+          "type": "array"
+        },
+        "infinitive": {
+          "type": "string"
+        },
+        "pastParticiple": {
+          "type": "string"
+        },
+        "pastSimple": {
+          "type": "string"
+        },
+        "verbId": {
+          "format": "int64",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "MessagesMessagesVerbsList": {
+      "properties": {
+        "verbs": {
+          "items": {
+            "$ref": "#/definitions/MessagesMessagesVerb"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "host": "main-api.endpoints.ivcheckerbackend.appspot.com",
+  "info": {
+    "title": "ivchecker",
+    "version": "v1"
+  },
+  "paths": {
+    "/ivchecker/v1/helloWorld": {
+      "get": {
+        "operationId": "IVCheckerApi_echoApiKey",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "$ref": "#/definitions/MessagesMessagesEchoResponse"
+            }
+          }
+        }
+      }
+    },
+    "/ivchecker/v1/verbs": {
+      "get": {
+        "operationId": "IVCheckerApi_getVerbs",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "$ref": "#/definitions/MessagesMessagesVerbsList"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "IVCheckerApi_postVerbs",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/MessagesMessagesVerb"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "$ref": "#/definitions/MessagesMessagesVerb"
+            }
+          }
+        }
+      }
+    },
+    "/ivchecker/v1/verbs/{id}": {
+      "delete": {
+        "operationId": "IVCheckerApi_delVerb",
+        "parameters": [
+          {
+            "format": "int32",
+            "in": "path",
+            "name": "id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "$ref": "#/definitions/MessagesMessagesEchoResponse"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "IVCheckerApi_getVerb",
+        "parameters": [
+          {
+            "format": "int32",
+            "in": "path",
+            "name": "id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "$ref": "#/definitions/MessagesMessagesVerb"
+            }
+          }
+        }
+      }
+    },
+    "/ivchecker/v1/verbs/{url_param_a}/{url_param_b}": {
+      "get": {
+        "operationId": "IVCheckerApi_getVerbsDifficulty",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "url_param_b",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "url_param_a",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "$ref": "#/definitions/MessagesMessagesVerbsList"
+            }
+          }
+        }
+      }
+    }
+  },
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http"
+  ],
+  "securityDefinitions": {
+    "google_id_token": {
+      "authorizationUrl": "",
+      "flow": "implicit",
+      "type": "oauth2",
+      "x-google-issuer": "accounts.google.com",
+      "x-google-jwks_uri": "https://www.googleapis.com/oauth2/v1/certs"
+    }
+  },
+  "swagger": "2.0"
+}

@@ -35,7 +35,7 @@ def run():
     :return:
     """
 
-    local('google_appengine/dev_appserver.py app.yaml &')
+    local('google_appengine/dev_appserver.py app/app.yaml &')
 
 
 def kill():
