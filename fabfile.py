@@ -1,6 +1,8 @@
 from fabric.api import local
 from fabric.colors import blue, red
 import time
+from provisioner.provisioner import prov
+
 ######################################################################
 #  FABRIC Fabfile.  <http://www.fabfile.org/>
 # This is the file to configure Fabric Python Library to admin tasks
@@ -35,7 +37,7 @@ def run():
     :return:
     """
 
-    local('google_appengine/dev_appserver.py app/app.yaml &')
+    local('google_appengine/dev_appserver.py app/app.yaml --port=8001 --host=0.0.0.0 --admin_port=8081 &')
 
 
 def kill():
@@ -55,6 +57,14 @@ def restart():
     kill()
     time.sleep(5)
     run()
+
+
+def provisioner():
+    """
+    Call to prov from provisioner tool.
+    :return: Nothing
+    """
+    prov()
 
 
 def test():

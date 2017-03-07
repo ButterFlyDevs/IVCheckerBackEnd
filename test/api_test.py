@@ -1,7 +1,7 @@
 import requests
 from time import sleep
 
-urlBase = 'http://localhost:8080/_ah/api/ivchecker/v1'
+urlBase = 'http://localhost:8001/_ah/api/ivchecker/v1'
 
 class TestClass:
 
